@@ -16,7 +16,6 @@
 		DD1964BD18C840C400A94C23 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD1964B718C840C400A94C23 /* InfoPlist.strings */; };
 		DD1964BE18C840C400A94C23 /* NCAdditions-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD1964B918C840C400A94C23 /* NCAdditions-Info.plist */; };
 		DD1964BF18C840C400A94C23 /* NCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1964BB18C840C400A94C23 /* NCAdditions.m */; };
-		DDECC9E118C85E6A00EF9F67 /* NCInterfaces.m in Sources */ = {isa = PBXBuildFile; fileRef = DDECC9E018C85E6A00EF9F67 /* NCInterfaces.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +73,7 @@
 		0279D95E16347E670072A5BD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		0279D95F16347E670072A5BD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0279D96016347E670072A5BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C52CD19C18C9BC59005FA14C /* init.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = init.sh; sourceTree = "<group>"; };
 		DD039DC318C847D60075E356 /* NotificationCenterDump.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationCenterDump.txt; sourceTree = "<group>"; };
 		DD039DC618C848F60075E356 /* NCInterfaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCInterfaces.h; sourceTree = "<group>"; };
 		DD1964B218C840B500A94C23 /* NCBlackhole-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCBlackhole-Prefix.pch"; sourceTree = "<group>"; };
@@ -81,11 +81,9 @@
 		DD1964B418C840B500A94C23 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD1964B818C840C400A94C23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DD1964B918C840C400A94C23 /* NCAdditions-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NCAdditions-Info.plist"; sourceTree = "<group>"; };
-		DD1964BA18C840C400A94C23 /* NCAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCAdditions.h; sourceTree = "<group>"; };
 		DD1964BB18C840C400A94C23 /* NCAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCAdditions.m; sourceTree = "<group>"; };
 		DD1964BC18C840C400A94C23 /* NCAdditions-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCAdditions-Prefix.pch"; sourceTree = "<group>"; };
 		DD917A3218C863C000958EF9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		DDECC9E018C85E6A00EF9F67 /* NCInterfaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCInterfaces.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				DD1964B218C840B500A94C23 /* NCBlackhole-Prefix.pch */,
+				C52CD19C18C9BC59005FA14C /* init.sh */,
 				DD1964B318C840B500A94C23 /* NCAdditions.1 */,
 				DD1964B418C840B500A94C23 /* main.m */,
 			);
@@ -175,9 +174,7 @@
 			children = (
 				DD1964B718C840C400A94C23 /* InfoPlist.strings */,
 				DD1964B918C840C400A94C23 /* NCAdditions-Info.plist */,
-				DD1964BA18C840C400A94C23 /* NCAdditions.h */,
 				DD039DC618C848F60075E356 /* NCInterfaces.h */,
-				DDECC9E018C85E6A00EF9F67 /* NCInterfaces.m */,
 				DD1964BB18C840C400A94C23 /* NCAdditions.m */,
 				DD1964BC18C840C400A94C23 /* NCAdditions-Prefix.pch */,
 			);
@@ -310,7 +307,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDECC9E118C85E6A00EF9F67 /* NCInterfaces.m in Sources */,
 				DD1964BF18C840C400A94C23 /* NCAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

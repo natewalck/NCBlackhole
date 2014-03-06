@@ -10,14 +10,29 @@
 #import <objc/runtime.h>
 #import "NCInterfaces.h"
 
+#define NCDEBUG 0
+
 @implementation NCAdditions
 
-+ (void)load {
-    [self patchNCNotificationCenterController];
-    [self createLog];
-    [self presentInstalledNotification];
-    
-    NSLog(@"NCAdditions loaded");
+__attribute__((constructor)) static void NCAdditionsInitSharedInstance(void) {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [NCAdditions createLog];
+        [NCAdditions patchNCNotificationCenterController];
+        NSLog(@"NCBlackhole: loaded");
+#if NCDEBUG
+        [NCAdditions logLoadedMessage];
+#endif
+    });
+}
+
++ (void)logLoadedMessage {
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self logLoadedMessage];
+        NSLog(@"NCBlackhole: is loaded");
+    });
 }
 
 + (void)createLog
@@ -27,28 +42,6 @@
     freopen(logFilePath, "a", stderr);
 }
 
-+ (void)presentInstalledNotification {
-    NSUserNotification *userNotification = [[NSUserNotification alloc] init];
-    userNotification.title = @"NCBlackhole installed";
-    [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:userNotification];
-}
-
-#pragma mark - Overrides
-
-BOOL NCAppInfo_isBlackHoled(NCAppInfo *_self)
-{
-    return [_self->_bundleIdentifier isEqualToString:@"com.apple.appstore"];
-}
-
-void NCAppInfo_log(NCAppInfo *_self) {
-    NSLog(@"%@", _self->_name);
-    NSLog(@"%@", _self->_notifications);
-    NSLog(@"%llu", _self->_notificationsToShow);
-    NSLog(@"%d", _self->_needsToFetchData);
-    NSLog(@"%d", _self->_type);
-    NSLog(@"%d", _self->_showInNotificationCenter);
-}
-
 + (void)patchNCNotificationCenterController
 {
 	Method originalMeth = class_getInstanceMethod(NSClassFromString(@"NCNotificationCenterController"), @selector(notificationCenter:presentNotification:forApplication:withUnpresentedCount:));
@@ -56,19 +49,16 @@ void NCAppInfo_log(NCAppInfo *_self) {
 	IMP originalImp = method_getImplementation(originalMeth);
     method_setImplementation(originalMeth,
                              (IMP)imp_implementationWithBlock(^(id _self, id notificationCenter, id userNotification, NCAppInfo *application, id unpresentedCount){
-        //TODO : remove logging
-        NSLog(@"-[NCNotificationCenterController notificationCenter:presentNotification:forApplication:withUnpresentedCount:]");
-        
+#if NCDEBUG
+        NSLog(@"-[NCNotificationCenterController(NCAdditions) notificationCenter:presentNotification:forApplication:withUnpresentedCount:]");
         NSLog(@"%@", _self);
         NSLog(@"%@", notificationCenter);
         NSLog(@"%@", userNotification);
         NSLog(@"%@", application);
         NSLog(@"%@", unpresentedCount);
-        
-        NCAppInfo_log(application);
-        
-        if (NCAppInfo_isBlackHoled(application)) {
-            NSLog(@"Did blackhole notification");
+#endif
+        if ([self NCAppInfoIsBlackHoled:application]) {
+            NSLog(@"NCBlackhole: Did blackhole notification %@", userNotification);
             return;
         }
         
@@ -80,6 +70,11 @@ void NCAppInfo_log(NCAppInfo *_self) {
                      unpresentedCount
                      );
     }));
+}
+
++ (BOOL)NCAppInfoIsBlackHoled:(NCAppInfo *)appInfo
+{
+    return [[appInfo valueForKey:@"_bundleIdentifier"] isEqualToString:@"com.apple.appstore"];
 }
 
 @end

@@ -10,6 +10,5 @@
 
 @interface NCAdditions : NSObject
 
-+ (void)load;
 
 @end

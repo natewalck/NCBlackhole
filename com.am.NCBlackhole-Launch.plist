@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+    <string>com.am.NCBlackhole</string>
+    <key>WorkingDirectory</key>
+    <string>/Applications/NCBlackhole</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Applications/NCBlackhole/init.sh</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Second</key>
+		<integer>5</integer>
+    </dict>
+</dict>
+</plist>
