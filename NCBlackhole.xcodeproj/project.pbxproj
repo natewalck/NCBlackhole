@@ -84,6 +84,7 @@
 		DD1964BA18C840C400A94C23 /* NCAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCAdditions.h; sourceTree = "<group>"; };
 		DD1964BB18C840C400A94C23 /* NCAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCAdditions.m; sourceTree = "<group>"; };
 		DD1964BC18C840C400A94C23 /* NCAdditions-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCAdditions-Prefix.pch"; sourceTree = "<group>"; };
+		DD917A3218C863C000958EF9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		DDECC9E018C85E6A00EF9F67 /* NCInterfaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCInterfaces.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,10 +114,11 @@
 			isa = PBXGroup;
 			children = (
 				DD039DC318C847D60075E356 /* NotificationCenterDump.txt */,
-				DD1964B618C840C400A94C23 /* NCAdditions */,
-				DD1964B118C840B500A94C23 /* NCBlackhole */,
+				DD917A3218C863C000958EF9 /* README.md */,
 				0279D93E163472F70072A5BD /* mach_inject_bundle.xcodeproj */,
 				0279D92F1634723E0072A5BD /* Frameworks */,
+				DD1964B618C840C400A94C23 /* NCAdditions */,
+				DD1964B118C840B500A94C23 /* NCBlackhole */,
 				0279D92D1634723E0072A5BD /* Products */,
 			);
 			sourceTree = "<group>";
